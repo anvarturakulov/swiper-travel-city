@@ -27,6 +27,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "swiper": "^6.3.5",
     "vue": "^2.6.11"
   },
   "devDependencies": {
