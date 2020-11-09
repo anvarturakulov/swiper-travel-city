@@ -173,6 +173,24 @@ li {
   border-radius: 8px;
 }
 
+
+.swiper-button-prev,
+.swiper-button-next{
+  width: 12px;
+  height: 20px;
+  top : 45%;
+
+  &+hover{
+    background-color: #4F73CD;
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+  }
+  &:after{
+    font-size: 0px;
+  }
+}
+
 .swiper-pagination{
   display: none;
 }

@@ -132,6 +132,7 @@ let swiper;
 
   function hoverInfoBoxPosition () {
     let swiperEl = document.querySelectorAll('.swiper-slide');
+    let swiperContainer = document.querySelector('.swiper-container');
     swiperEl.forEach(item =>{
         item.addEventListener('mouseenter', ()=> {
             let infoWindow = item.querySelector('.content');
@@ -143,7 +144,8 @@ let swiper;
             if (+window.innerWidth >= 500) {
                 let itemSize = item.getBoundingClientRect();
                 let imgSize = item.querySelector('img').getBoundingClientRect();
-                let imgRightSideSize = window.innerWidth - imgSize.right;
+                let imgRightSideSize = window.innerWidth - imgSize.right-(window.innerWidth-swiperContainer.getBoundingClientRect().right);
+
                 let imgLeftSideSize = imgSize.right-imgSize.width;
                 //console.log(`Left ${imgLeftSideSize} === Rigth ${imgRightSideSize} == winfow ${window.innerWidth}`);
                 if (imgRightSideSize >= parseInt(infoWindow.style.width)) {
