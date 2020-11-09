@@ -29,8 +29,13 @@ let swiper;
                         <div class="country">${item.country}</div>
                     </div>
                     <div class="content">
-                        ${item.content} 
-                    </div>
+                        <div class="content-text">
+                            ${item.content}
+                        </div>
+                        <div class="content-link">
+                            <a href="#">Подробнее</a>
+                        </div>
+                  </div>
                 </div>`;    
         });
         swiperSlide = document.querySelectorAll('.swiper-slide');
@@ -56,6 +61,7 @@ let swiper;
   
   fillDataInformation(true);
   constructNewSlider();
+  hoverInfoBoxPosition();
 
   function showSliderByCategory(category) {
     fillDataInformation(false);
@@ -69,12 +75,36 @@ let swiper;
         });
         swiper.update();
     }
+    hoverInfoBoxPosition();
   }
 
   categoryItem.forEach((item) => {
       item.addEventListener('click',(e)=>{
+        categoryItem.forEach(item => {
+            item.classList.remove('active-link');
+        });
         showSliderByCategory(e.target.getAttribute('data-category'));
+        e.target.classList.add('active-link');
       });
+      
   });
+
+
+  function hoverInfoBoxPosition () {
+    let swiperEl = document.querySelectorAll('.swiper-slide');
+    
+    swiperEl.forEach(item =>{
+        item.addEventListener('click', ()=> {
+
+            let itemKorr = item.getBoundingClientRect();
+            let swiperContainer = document.querySelector('.swiper-container');
+
+            console.log(itemKorr);
+            console.log(window.innerWidth);
+            console.log(swiperContainer.getBoundingClientRect());
+            
+        });
+    });
+  }
 
   categoryItem[0].classList.add('active-link');
